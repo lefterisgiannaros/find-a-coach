@@ -1,7 +1,7 @@
 <template>
   <li>
     <h3>{{ fullName }}</h3>
-    <h4>${{ rate }}/hour</h4>
+    <h4>{{ rateDescription }}</h4>
     <div>
       <base-badge
         v-for="area in areas"
@@ -11,10 +11,10 @@
       ></base-badge>
     </div>
     <div class="actions">
-      <base-button link to="coachContactLink" mode="outline"
+      <base-button link :to="coachContactLink" mode="outline"
         >Contact</base-button
       >
-      <base-button link to="coachDetails">View Details</base-button>
+      <base-button link :to="coachDetailsLink">View Details</base-button>
     </div>
   </li>
 </template>
@@ -31,6 +31,9 @@ export default {
     },
     coachDetailsLink() {
       return this.$route.path + '/' + this.id;
+    },
+    rateDescription() {
+      return '$' + this.rate + '/hour';
     },
   },
 };
